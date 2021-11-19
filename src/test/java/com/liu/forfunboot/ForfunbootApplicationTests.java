@@ -8,10 +8,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 //@SpringBootTest
 class ForfunbootApplicationTests {
@@ -63,12 +60,19 @@ class ForfunbootApplicationTests {
 
     }
 
-    public static void getFilesMap(Map<String,File> fileMap, Path path){
+    public static Map<String,File> getFilesMap(Path path){
+        //给定一个路径，能够找到该路径下所有的文件形成嵌套map。
+        HashMap<String, File> fileHashMap = new HashMap<>();
         File file = path.toFile();
         if (file.isFile()){
-            fileMap.put(file.getName(), file);
-            return;
+            fileHashMap.put(file.getName(), file);
+            return fileHashMap;
         }
+        List<File> nextFiles = Arrays.asList(file.listFiles());
+        for (File nextFile : nextFiles) {
+
+        }
+        return null;
     }
 
     public static void getFilesList(List<File> fileList, Path path){
