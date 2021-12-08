@@ -1,5 +1,9 @@
 package com.liu.forfunboot;
 
+import com.liu.forfunboot.po.User2;
+import com.liu.forfunboot.util.CsvExportUtil;
+import com.liu.forfunboot.util.CsvParser;
+import org.assertj.core.util.Lists;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
@@ -94,6 +98,29 @@ class ForfunbootApplicationTests {
         Path path = Paths.get(PATH );
         getFilesList(files, path);
         files.stream().forEach(System.out::println);
+    }
+
+
+    @Test
+    public void test4(){
+        String delimiter = ",";
+        // 初始化parser
+        CsvParser<User2> parser = new CsvParser<>(delimiter);
+        // 定义测试对象
+        User2 user = new User2(1, "mwf");
+        // 转换
+        String parsed = parser.parse(user);
+
+        System.out.println(parsed);
+    }
+
+
+    @Test
+    public void test5(){
+        ArrayList<User2> user2s = Lists.newArrayList(new User2(1, "ljx1"), new User2(2, "ljx2"));
+        String[] headers = {"id", "name"};
+        byte[] bytes = CsvExportUtil.writeCSV(user2s, headers);
+        System.out.println(new String(bytes));
     }
 
 }
