@@ -1,0 +1,13 @@
+syntax = "proto3";
+
+package com.liu.forfunboot.protobuf;
+
+option optimize_for =SPEED;
+option java_package = "com.liu.forfunboot.protobuf";
+option java_outer_classname = "DataInfo";
+
+message Student {
+  string name = 1;
+  int32 age = 2;
+  string address = 3;
+}
