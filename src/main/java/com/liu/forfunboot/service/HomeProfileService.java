@@ -4,6 +4,7 @@ import com.liu.forfunboot.constant.HomeConstants;
 import com.liu.forfunboot.dto.WrapDto;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.File;
@@ -16,9 +17,16 @@ import java.util.List;
 @Service
 @Slf4j
 public class HomeProfileService {
+    @Autowired
+    HomeConstants homeConstants;
 
-    public List<WrapDto> getProfilePath(String id) {
-        String path = HomeConstants.idToProfilePath.getOrDefault(id, null);
+    public List<WrapDto> getProfilePath(String id, String pathparam) {
+        String path;
+        if (StringUtils.isBlank(pathparam)){
+            path = homeConstants.idToProfilePath.getOrDefault(id, null);
+        }else {
+            path = pathparam;
+        }
         if (StringUtils.isBlank(path)){
             log.error("id not exist");
             return null;

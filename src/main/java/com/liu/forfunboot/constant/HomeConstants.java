@@ -1,15 +1,31 @@
 package com.liu.forfunboot.constant;
 
+
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
-public class HomeConstants {
-    public static Map<String, String> idToProfilePath = new HashMap<>();
+@Component
+public class HomeConstants implements InitializingBean {
+    @Value("${dir.root}")
+    private String root;
+    @Value("${dir.xuanxuan}")
+    private String xuanxuan;
+    @Value("${dir.ruirui}")
+    private String ruirui;
 
-    static {
-        idToProfilePath.put("root", "/Users");
-        idToProfilePath.put("xuanxuan", "/Users/ljx");
-        idToProfilePath.put("ruirui", "/Users/ruirui");
+
+
+    public Map<String, String> idToProfilePath = new HashMap<>();
+
+
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        idToProfilePath.put("root", root);
+        idToProfilePath.put("xuanxuan", xuanxuan);
+        idToProfilePath.put("ruirui", ruirui);
     }
-
 }

@@ -4,10 +4,7 @@ import com.liu.forfunboot.dto.FileDto;
 import com.liu.forfunboot.po.Result;
 import com.liu.forfunboot.util.FileUtil;
 import com.liu.forfunboot.util.ResultUtil;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
 import java.nio.file.Path;
@@ -17,6 +14,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/file")
+@CrossOrigin
 public class FileController {
 
     @GetMapping("/test")
