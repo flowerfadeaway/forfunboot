@@ -1,7 +1,9 @@
 package com.liu.forfunboot.controller;
 
 import com.alibaba.excel.EasyExcel;
+import com.liu.forfunboot.client.BadGuyFeignClient;
 import com.liu.forfunboot.po.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,9 +16,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 @RestController
-@RequestMapping("")
+@RequestMapping("/forfun")
 @CrossOrigin(origins = "*")
 public class ForfunController {
+
+    @Autowired
+    private BadGuyFeignClient badGuyFeignClient;
+
     @GetMapping("/hello")
 //    @CrossOrigin
     public String hello(){
@@ -97,6 +103,12 @@ public class ForfunController {
                 }
             }
         }
+    }
+
+    @GetMapping("/badGuy")
+    public String getSweething(){
+        String sweetNothings = badGuyFeignClient.getSweetNothings();
+        return sweetNothings;
     }
 
 
