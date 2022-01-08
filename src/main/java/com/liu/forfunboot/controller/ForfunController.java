@@ -27,7 +27,7 @@ public class ForfunController {
 //    @CrossOrigin
     public String hello(){
         System.out.println("hello ljx");
-        return "hello ljx";
+        return "hello ljx.jenkins";
     }
 
 
