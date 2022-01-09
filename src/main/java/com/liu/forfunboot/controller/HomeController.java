@@ -71,4 +71,9 @@ public class HomeController {
         return ResultUtil.success();
     }
 
+    @GetMapping("/hello")
+    public String hello() {
+        return "welcome to home";
+    }
+
 }
