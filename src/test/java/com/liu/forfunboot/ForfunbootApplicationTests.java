@@ -14,7 +14,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.*;
 
-@SpringBootTest
+@SpringBootTest()
 class ForfunbootApplicationTests {
 
     private static String PATH = "/Users/nowcoder/nowcoder/liujingxuan/";
